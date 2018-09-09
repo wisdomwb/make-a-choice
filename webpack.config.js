@@ -4,7 +4,8 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'//publicPath allows you to specify the base path for all the assets within your application.
   },
   module: {
     rules: [{
@@ -18,7 +19,37 @@ module.exports = {
       use: {
         loader: 'html-loader'
       }
+    }, {
+      test: /\.css/,
+      use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]']
+    }, {
+      test: /\.less$/,
+      use: [{
+        loader: 'style-loader'// creates style nodes from JS strings
+      }, {
+        loader: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',// translates CSS into CommonJS
+      }, {
+        loader: 'less-loader'// compiles Less to CSS
+      }],
+      exclude: [
+        path.resolve(__dirname, 'node_modules'),
+      ],
+    }, {
+      test: /\.less$/,
+      use: [{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'less-loader'
+      }],
+      include: [
+        path.resolve(__dirname, 'node_modules'),
+      ],
     }]
+  },
+  devServer: {
+    historyApiFallback: true,//historyAPIFallback will redirect 404s to /index.html
   },
   plugins: [
     new HtmlWebpackPlugin({

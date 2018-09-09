@@ -1,4 +1,5 @@
 import React from "react"
 import ReactDOM from 'react-dom'
+import { route } from './route'
 
-ReactDOM.render(<div>hello</div>, document.getElementById('root'))
+ReactDOM.render(route, document.getElementById('root'))
