@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
@@ -50,12 +51,19 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,//historyAPIFallback will redirect 404s to /index.html
+    host: '0.0.0.0',//Specify a host to use. By default this is localhost. If you want your server to be accessible externally, specify it like this:
+    port: 8080,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin({
+      // Options...
     })
+
   ],
   mode: 'none'
 }
