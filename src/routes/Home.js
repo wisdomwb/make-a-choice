@@ -3,6 +3,9 @@ import { NavBar, Icon, Button, WhiteSpace } from 'antd-mobile'
 import * as style from './Home.less'
 
 class Home extends Component {
+  clickStart() {
+    this.props.history.push('/question')
+  }
   render() {
     return (
       <div className={style.home}>
@@ -22,7 +25,7 @@ class Home extends Component {
             这款小应用可以帮助你分配影响因素的权重，评价各种选项的优势，然后根据数据做出较理性的推荐。
           </div>
           <div className={style.footer}>
-            <Button type='primary'>开始</Button>
+            <Button type='primary' onClick={this.clickStart.bind(this)}>开始</Button>
           </div>
         </div>
       </div>
