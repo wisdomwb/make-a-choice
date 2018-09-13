@@ -42,7 +42,10 @@ module.exports = {
       }, {
         loader: 'css-loader'
       }, {
-        loader: 'less-loader'
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true
+        }
       }],
       include: [
         path.resolve(__dirname, 'node_modules'),

@@ -3,12 +3,15 @@ import { NavBar, Icon, Button, WhiteSpace, TextareaItem } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import * as style from './Question.less'
 
-console.log(createForm, 'createForm')
 class Question extends Component {
+  componentDidMount() {
+    this.autoFocusInst.focus()
+  }
   clickNext() {
     this.props.history.push('/addfactor')
   }
   render() {
+    const { getFieldProps } = this.props.form
     return (
       <div className={style.question}>
         <NavBar
@@ -23,11 +26,13 @@ class Question extends Component {
         <div className={style.body}>
           <div className={style.title}>面临的选择是什么？</div>
           <div className={style.content}>
-            {/* <TextareaItem
+            <TextareaItem
               {...getFieldProps('control')}
               title=""
               placeholder="请输入问题..."
-            /> */}
+              ref={el => this.autoFocusInst = el}
+              autoHeight
+            />
           </div>
           <div className={style.footer}>
             <Button type='primary' onClick={this.clickNext.bind(this)}>下一步</Button>
