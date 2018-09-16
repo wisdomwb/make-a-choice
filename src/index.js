@@ -1,16 +1,14 @@
 import React from "react"
 import ReactDOM from 'react-dom'
-import { route } from './route'
+import { Root } from './components/Root'
 import makeAChoice from './reducers/index'
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
 
 let store = createStore(makeAChoice)
 ReactDOM.render(
-  <Provider store={store}>
-    route
-  </Provider>,
-  document.getElementById('root'))
+  <Root store={store}></Root>,
+  document.getElementById('root')
+)
 
 
 /* let state = {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { NavBar, Icon, Button, WhiteSpace, TextareaItem } from 'antd-mobile'
-import { createForm } from 'rc-form'
 import * as style from './Question.less'
 
 class Question extends Component {
@@ -11,7 +10,6 @@ class Question extends Component {
     this.props.history.push('/addfactor')
   }
   render() {
-    const { getFieldProps } = this.props.form
     return (
       <div className={style.question}>
         <NavBar
@@ -27,7 +25,6 @@ class Question extends Component {
           <div className={style.title}>面临的选择是什么？</div>
           <div className={style.content}>
             <TextareaItem
-              {...getFieldProps('control')}
               title=""
               placeholder="请输入问题..."
               ref={el => this.autoFocusInst = el}
@@ -43,5 +40,4 @@ class Question extends Component {
   }
 }
 
-const QuestionWrapper = createForm()(Question)
-export default QuestionWrapper
+export default Question
