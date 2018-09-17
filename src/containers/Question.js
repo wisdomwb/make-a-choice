@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import { NavBar, Icon, Button, WhiteSpace, TextareaItem } from 'antd-mobile'
+import { NavBar, Icon, Button, WhiteSpace, TextareaItem, Toast } from 'antd-mobile'
 import * as style from './Question.less'
+import { connect } from 'react-redux'
+import { saveQuestion } from '../actions'
 
 class Question extends Component {
   componentDidMount() {
     this.autoFocusInst.focus()
   }
   clickNext() {
+    let value = this.autoFocusInst.state.value.trim()
+    if (!value) {
+      Toast.info('问题不能为空')
+      return
+    }
+    this.props.dispatch(saveQuestion(value))
     this.props.history.push('/addfactor')
   }
   render() {
@@ -40,4 +48,4 @@ class Question extends Component {
   }
 }
 
-export default Question
+export default connect()(Question)
