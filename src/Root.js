@@ -13,24 +13,45 @@ class Root extends Component {
     super(props)
     this.state = {
       question: '',
-      factors: []
+      factors: [{
+        text: 'a',
+        proportion: 33.3
+      }, {
+        text: 'b',
+        proportion: 33.3
+      }, {
+        text: 'c',
+        proportion: 33.3
+      }]
     }
   }
+
+  //保存问题
   saveQuestion(text) {
     this.setState({
       question: text
     })
   }
 
+  //添加因素
   addFactor(factor) {
     this.setState({
       factors: [...this.state.factors, { text: factor }]
     })
   }
 
+  //删除因素
   removeFactor(factor) {
     this.setState(prevState => {
       return { factors: prevState.factors.filter(item => item.text !== factor) }
+    })
+  }
+
+  //保存因素分配比例
+  saveProportion(arr) {
+    this.setState(prevState => {
+      console.log()
+      return { factors: prevState.factors.map((item, index) => item.proportion = arr[index]) }
     })
   }
 
@@ -45,7 +66,9 @@ class Root extends Component {
           <Route exact path="/addfactor" render={
             props => <AddFactor {...props} {...this.state} addFactor={this.addFactor.bind(this)} removeFactor={this.removeFactor.bind(this)} />
           } />
-          <Route exact path="/divideproportion" component={DivideProportion} />
+          <Route exact path="/divideproportion" render={
+            props => <DivideProportion {...props} {...this.state} saveProportion={this.saveProportion.bind(this)} />
+          } />
         </Switch>
       </Router>
     )
