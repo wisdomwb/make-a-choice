@@ -6,7 +6,10 @@ import Split from 'split.js'
 class DivideProportion extends Component {
 
   componentDidMount() {
+    console.log(this.props.saveProportion, 'eefefe')
+    const that = this
     let split = Split(['#one', '#two', '#three'], {
+      sizes: [33.3, 33.3, 33.3],
       minSize: 0,
       elementStyle(dimension, size, gutterSize) {
         return {
@@ -19,8 +22,11 @@ class DivideProportion extends Component {
         }
       },
       onDrag() {
-        console.log(split.getSizes(), 'split.getSizes()')//[35.768352531710974, 37.81420049359002, 26.417446974699033]
+        // const arr = split.getSizes().map(item => parseFloat(item.toFixed(1)))
+        const arr = split.getSizes().map(item => Math.round(item))
+        console.log(arr, 'split.getSizes()')//[35.768352531710974, 37.81420049359002, 26.417446974699033]
         //保存比例
+        that.props.saveProportion(arr)
       }
     })
   }
