@@ -1,12 +1,9 @@
 import React from "react"
 import ReactDOM from 'react-dom'
-import { Root } from './components/Root'
-import makeAChoice from './reducers/index'
-import { createStore } from 'redux'
+import Root from './Root'
 
-let store = createStore(makeAChoice)
 ReactDOM.render(
-  <Root store={store}></Root>,
+  <Root />,
   document.getElementById('root')
 )
 

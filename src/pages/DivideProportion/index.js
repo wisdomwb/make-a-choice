@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import * as style from './AddFactor.less'
+import * as style from './style.less'
 import { Tag, InputItem, Toast, Button, NavBar, Icon } from 'antd-mobile'
-import { addFactor, reduceFactor } from '../actions'
 
 class DivideProportion extends Component {
 
@@ -34,10 +32,4 @@ class DivideProportion extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    question: state.question,
-    factors: state.factors
-  }
-}
-export default connect(mapStateToProps)(DivideProportion)
+export default DivideProportion

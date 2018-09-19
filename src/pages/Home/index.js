@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Button, WhiteSpace } from 'antd-mobile'
-import * as style from './Home.less'
+import * as style from './style.less'
 
 const Home = (props) => {
   const clickStart = () => {

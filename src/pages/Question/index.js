@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { NavBar, Icon, Button, WhiteSpace, TextareaItem, Toast } from 'antd-mobile'
-import * as style from './Question.less'
-import { connect } from 'react-redux'
-import { saveQuestion } from '../actions'
+import * as style from './style.less'
 
 class Question extends Component {
   componentDidMount() {
@@ -14,7 +12,7 @@ class Question extends Component {
       Toast.info('问题不能为空')
       return
     }
-    this.props.dispatch(saveQuestion(value))
+    this.props.saveQuestion(value)
     this.props.history.push('/addfactor')
   }
   render() {
@@ -48,4 +46,4 @@ class Question extends Component {
   }
 }
 
-export default connect()(Question)
+export default Question
