@@ -21,7 +21,7 @@ class DivideProportion extends Component {
             <Icon key="1" type="ellipsis" />,
           ]}
         >NavBar</NavBar>
-        <div className={style.addFactor}>
+        <div className={style.divideProportion}>
           <div className={style.question}>问题：{question}</div>
           <div className={style.title}>划分这些因素的权重</div>
 

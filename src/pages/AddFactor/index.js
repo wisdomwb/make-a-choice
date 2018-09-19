@@ -14,13 +14,15 @@ class AddFactor extends Component {
       Toast.info('请输入内容')
       return
     }
-    // this.props.dispatch(addFactor(value))
+    this.props.addFactor(value)
     this.inputRef.state.value = ''
+    this.inputRef.focus()
   }
 
   //移除标签
   remove(text) {
-    // this.props.dispatch(reduceFactor(text))
+    console.log('remove')
+    this.props.removeFactor(text)
   }
 
   clickNext() {
@@ -50,12 +52,12 @@ class AddFactor extends Component {
           <div className={style.tagContainer}>
             {
               factors.map((item, index) => {
-                return <Tag closable key={index}
+                return <Tag closable key={item.text}
                   onClose={(a) => {
                     this.remove(item.text)
                   }}
                   afterClose={() => {
-                    console.log('afterClose');
+                    // console.log('afterClose');
                   }}
                 >
                   {item.text}

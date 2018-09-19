@@ -21,13 +21,30 @@ class Root extends Component {
       question: text
     })
   }
+
+  addFactor(factor) {
+    this.setState({
+      factors: [...this.state.factors, { text: factor }]
+    })
+  }
+
+  removeFactor(factor) {
+    this.setState(prevState => {
+      return { factors: prevState.factors.filter(item => item.text !== factor) }
+    })
+  }
+
   render() {
     return (
       <Router history={newHistory}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/question" render={props => <Question {...props} {...this.state} saveQuestion={this.saveQuestion.bind(this)} />} />
-          <Route exact path="/addfactor" component={props => <AddFactor {...props} {...this.state} />} />
+          <Route exact path="/question" render={
+            props => <Question {...props} {...this.state} saveQuestion={this.saveQuestion.bind(this)} />
+          } />
+          <Route exact path="/addfactor" render={
+            props => <AddFactor {...props} {...this.state} addFactor={this.addFactor.bind(this)} removeFactor={this.removeFactor.bind(this)} />
+          } />
           <Route exact path="/divideproportion" component={DivideProportion} />
         </Switch>
       </Router>
