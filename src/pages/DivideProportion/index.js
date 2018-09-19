@@ -6,17 +6,21 @@ import Split from 'split.js'
 class DivideProportion extends Component {
 
   componentDidMount() {
-    Split(['#one', '#two', '#three'], {
+    let split = Split(['#one', '#two', '#three'], {
       minSize: 0,
-      elementStyle: function (dimension, size, gutterSize) {
+      elementStyle(dimension, size, gutterSize) {
         return {
           'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'
         }
       },
-      gutterStyle: function (dimension, gutterSize) {
+      gutterStyle(dimension, gutterSize) {
         return {
           'flex-basis': gutterSize + 'px'
         }
+      },
+      onDrag() {
+        console.log(split.getSizes(), 'split.getSizes()')//[35.768352531710974, 37.81420049359002, 26.417446974699033]
+        //保存比例
       }
     })
   }
