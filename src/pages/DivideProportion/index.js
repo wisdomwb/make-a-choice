@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import * as style from './style.less'
-import { Tag, InputItem, Toast, Button, NavBar, Icon } from 'antd-mobile'
+import { Button, NavBar, Icon } from 'antd-mobile'
 import Split from 'split.js'
 //颜料池
-const colors = ['#FF4500', '#32CD32', '#00BFFF', '#FF00FF', '#00FFFF', '#FFD700']
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 class DivideProportion extends Component {
 
@@ -37,12 +37,11 @@ class DivideProportion extends Component {
   }
 
   clickNext() {
-
+    this.props.history.push('/addoption')
   }
 
   render() {
     const { question, factors } = this.props
-    const bgColors = []
 
     return (
       <div>
@@ -62,10 +61,10 @@ class DivideProportion extends Component {
             {
               factors.map((item, index) => {
                 return (
-                  <div id={`id_${index}`} key={index} style={{ background: colors[index] }}>
+                  <div id={`id_${index}`} key={index} style={{ background: COLORS[index] }}>
                     <div>
                       <div>{item.text}</div>
-                      <div>{item.proportion.toFixed(1)}%</div>
+                      <div>{parseFloat(item.proportion.toFixed(1))}%</div>
                     </div>
                   </div>
                 )

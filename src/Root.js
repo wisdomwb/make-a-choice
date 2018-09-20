@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Question from './pages/Question'
 import AddFactor from './pages/AddFactor'
 import DivideProportion from './pages/DivideProportion'
+import AddOption from './pages/AddOption'
 
 const newHistory = createBrowserHistory()
 
@@ -13,7 +14,17 @@ class Root extends Component {
     super(props)
     this.state = {
       question: '',
-      factors: []
+      factors: [{
+        text: 'a',
+        proportion: 50
+      }, {
+        text: 'b',
+        proportion: 30
+      }, {
+        text: 'c',
+        proportion: 20
+      }],
+      options: []
     }
   }
 
@@ -51,16 +62,6 @@ class Root extends Component {
         return item
       })
     })
-    /* this.setState(prevState => {
-      const proportion = this.getProportion(prevState.factors.length - 1)
-      const temp = prevState.factors.filter(item => item.text !== factor)
-      return {
-        factors: temp.map(item => {
-          item.proportion = proportion
-          return item
-        })
-      }
-    }) */
   }
 
   //保存因素分配比例
@@ -72,6 +73,22 @@ class Root extends Component {
           return item
         })
       }
+    })
+  }
+
+  //添加选项
+  addOption(option) {
+    const temp = [...this.state.options, { text: option }]
+    this.setState({
+      options: temp.map(item => item)
+    })
+  }
+
+  //删除选项
+  removeOption(option) {
+    const temp = this.state.options.filter(item => item.text !== option)
+    this.setState({
+      options: temp.map(item => temp)
     })
   }
 
@@ -88,6 +105,9 @@ class Root extends Component {
           } />
           <Route exact path="/divideproportion" render={
             props => <DivideProportion {...props} {...this.state} saveProportion={this.saveProportion.bind(this)} />
+          } />
+          <Route exact path="/addoption" render={
+            props => <AddOption {...props} {...this.state} addOption={this.addOption.bind(this)} removeOption={this.removeOption.bind(this)} />
           } />
         </Switch>
       </Router>
