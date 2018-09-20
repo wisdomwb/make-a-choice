@@ -13,16 +13,7 @@ class Root extends Component {
     super(props)
     this.state = {
       question: '',
-      factors: [{
-        text: 'a',
-        proportion: 33.3
-      }, {
-        text: 'b',
-        proportion: 33.3
-      }, {
-        text: 'c',
-        proportion: 33.3
-      }]
+      factors: []
     }
   }
 
@@ -33,25 +24,54 @@ class Root extends Component {
     })
   }
 
+  //获取平分的比例
+  getProportion(n) {
+    return parseFloat((100 / n).toFixed(2))
+  }
+
   //添加因素
   addFactor(factor) {
+    const proportion = this.getProportion(this.state.factors.length + 1)
+    const temp = [...this.state.factors, { text: factor, proportion }]
     this.setState({
-      factors: [...this.state.factors, { text: factor }]
+      factors: temp.map(item => {
+        item.proportion = proportion
+        return item
+      })
     })
   }
 
   //删除因素
   removeFactor(factor) {
-    this.setState(prevState => {
-      return { factors: prevState.factors.filter(item => item.text !== factor) }
+    const proportion = this.getProportion(this.state.factors.length - 1)
+    const temp = this.state.factors.filter(item => item.text !== factor)
+    this.setState({
+      factors: temp.map(item => {
+        item.proportion = proportion
+        return item
+      })
     })
+    /* this.setState(prevState => {
+      const proportion = this.getProportion(prevState.factors.length - 1)
+      const temp = prevState.factors.filter(item => item.text !== factor)
+      return {
+        factors: temp.map(item => {
+          item.proportion = proportion
+          return item
+        })
+      }
+    }) */
   }
 
   //保存因素分配比例
   saveProportion(arr) {
     this.setState(prevState => {
-      console.log()
-      return { factors: prevState.factors.map((item, index) => item.proportion = arr[index]) }
+      return {
+        factors: prevState.factors.map((item, index) => {
+          item.proportion = arr[index]
+          return item
+        })
+      }
     })
   }
 

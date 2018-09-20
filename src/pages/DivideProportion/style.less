@@ -16,9 +16,17 @@
     height: 100px;
     &>div {
       text-align: center;
-      line-height: 100px;
     }
     border: 1px solid #ccc;
+    div[id^='id'] {
+      position: relative;
+      &>div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
   }
   :global {
     .gutter {
