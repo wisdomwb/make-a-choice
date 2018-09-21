@@ -61,7 +61,7 @@ class DivideProportion extends Component {
             {
               factors.map((item, index) => {
                 return (
-                  <div id={`id_${index}`} key={index} style={{ background: COLORS[index] }}>
+                  <div id={`id_${index}`} key={index} style={{ background: COLORS[index % COLORS.length] }}>
                     <div>
                       <div>{item.text}</div>
                       <div>{parseFloat(item.proportion.toFixed(1))}%</div>

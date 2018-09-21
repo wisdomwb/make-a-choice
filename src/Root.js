@@ -6,6 +6,7 @@ import Question from './pages/Question'
 import AddFactor from './pages/AddFactor'
 import DivideProportion from './pages/DivideProportion'
 import AddOption from './pages/AddOption'
+import Mark from './pages/Mark'
 
 const newHistory = createBrowserHistory()
 
@@ -16,15 +17,19 @@ class Root extends Component {
       question: '',
       factors: [{
         text: 'a',
-        proportion: 50
+        proportion: 60
       }, {
         text: 'b',
         proportion: 30
       }, {
         text: 'c',
-        proportion: 20
+        proportion: 10
       }],
-      options: []
+      options: [{
+        text: 'x'
+      }, {
+        text: 'y'
+      }]
     }
   }
 
@@ -108,6 +113,9 @@ class Root extends Component {
           } />
           <Route exact path="/addoption" render={
             props => <AddOption {...props} {...this.state} addOption={this.addOption.bind(this)} removeOption={this.removeOption.bind(this)} />
+          } />
+          <Route exact path="/mark" render={
+            props => <Mark {...props} {...this.state} />
           } />
         </Switch>
       </Router>
