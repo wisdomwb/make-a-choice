@@ -22,7 +22,16 @@ module.exports = {
       }
     }, {
       test: /\.css/,
-      use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]']
+      use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'],
+      exclude: [
+        path.resolve(__dirname, 'node_modules'),
+      ]
+    }, {
+      test: /\.css/,
+      use: ['style-loader', 'css-loader'],
+      include: [
+        path.resolve(__dirname, 'node_modules'),
+      ]
     }, {
       test: /\.less$/,
       use: [{
@@ -50,6 +59,9 @@ module.exports = {
       include: [
         path.resolve(__dirname, 'node_modules'),
       ],
+    }, {
+      test: /\.svg$/,
+      loader: 'svg-sprite-loader'
     }]
   },
   devServer: {

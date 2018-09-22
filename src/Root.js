@@ -26,9 +26,29 @@ class Root extends Component {
         proportion: 10
       }],
       options: [{
-        text: 'x'
+        text: 'x',
+        stars: [{
+          key: 'a',
+          value: 3,
+        }, {
+          key: 'b',
+          value: 5,
+        }, {
+          key: 'c',
+          value: 5,
+        }]
       }, {
-        text: 'y'
+        text: 'y',
+        stars: [{
+          key: 'a',
+          value: 2,
+        }, {
+          key: 'b',
+          value: 5,
+        }, {
+          key: 'c',
+          value: 4,
+        }]
       }]
     }
   }
