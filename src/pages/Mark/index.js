@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import * as style from './style.less'
 import { Toast, Button, NavBar, Icon } from 'antd-mobile'
-import CustomIcon from '../../components/CustomIcon'
 import Table from 'rc-table'
 import 'rc-table/assets/index.css'
+import Rate from '../../components/Rate'
 
 class Mark extends Component {
 
@@ -11,8 +11,8 @@ class Mark extends Component {
     // this.props.history.push('/divideproportion')
   }
 
-  onChange() {
-
+  onChangeValue(record, factor, value) {
+    this.props.changeValue({ factor, option: record.key, value })
   }
 
   //获取表头及渲染方式
@@ -20,19 +20,20 @@ class Mark extends Component {
     const columns = []
     columns.push({
       title: '候选项',
-      key: 'text',
-      dataIndex: 'text'
+      key: 'key',
+      dataIndex: 'key',
+      align: 'center',
     })
     factors.forEach(factor => {
       const obj = {
         title: factor.text,
         key: factor.text,
         dataIndex: factor.text,
-        render: item => <div>{item}</div>
+        align: 'center',
+        render: (item, record) => <div><Rate value={item} onChange={this.onChangeValue.bind(this, record, factor.text)} /></div>
       }
       columns.push(obj)
     })
-    console.log(columns, 'columns')
     return columns
   }
 
@@ -41,13 +42,12 @@ class Mark extends Component {
     const data = []
     options.forEach(option => {
       let obj = {}
-      obj.text = option.text
+      obj.key = option.text
       option.stars.forEach(item1 => {
         obj[item1.key] = item1.value
       })
       data.push(obj)
     })
-    console.log(data, 'data')
     return data
   }
   render() {
@@ -65,8 +65,7 @@ class Mark extends Component {
         >NavBar</NavBar>
         <div className={style.mark}>
           <div className={style.question}>问题：{question}</div>
-          <Table columns={this.getColumns(factors)} data={this.getData(options)} rowKey='text' />
-          {/* <CustomIcon type={require('../../../public/star.svg')} style={{ fill: '#f00' }} /> */}
+          <Table columns={this.getColumns(factors)} data={this.getData(options)} rowKey='key' scroll={{ x: true }} />
           <Button type='primary' onClick={this.clickNext.bind(this)} style={{ margin: '20px 0 0' }}>下一步</Button>
         </div>
       </div>

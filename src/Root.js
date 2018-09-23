@@ -117,6 +117,21 @@ class Root extends Component {
     })
   }
 
+  //修改评分
+  changeValue({ factor, option, value }) {
+    let a = [...this.state.options]
+    a.forEach(item => {
+      if (item.text === option) {
+        item.stars.forEach(item1 => {
+          if (item1.key === factor) {
+            item1.value = value
+          }
+        })
+      }
+    })
+    this.setState({ options: a })
+  }
+
   render() {
     return (
       <Router history={newHistory}>
@@ -135,7 +150,7 @@ class Root extends Component {
             props => <AddOption {...props} {...this.state} addOption={this.addOption.bind(this)} removeOption={this.removeOption.bind(this)} />
           } />
           <Route exact path="/mark" render={
-            props => <Mark {...props} {...this.state} />
+            props => <Mark {...props} {...this.state} changeValue={this.changeValue.bind(this)} />
           } />
         </Switch>
       </Router>
