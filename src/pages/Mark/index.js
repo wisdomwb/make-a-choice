@@ -8,7 +8,7 @@ import Rate from '../../components/Rate'
 class Mark extends Component {
 
   clickNext() {
-    // this.props.history.push('/divideproportion')
+    this.props.history.push('/calculate')
   }
 
   onChangeValue(record, factor, value) {

@@ -5,10 +5,6 @@ import { ResponsiveContainer, PieChart, Pie, Sector, Cell, Legend } from 'Rechar
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
 
 class AddOption extends Component {
-  componentDidMount() {
-    this.inputRef.focus()
-  }
-
   //点击添加
   addOption() {
     let value = this.inputRef.state.value.trim()
@@ -94,7 +90,7 @@ class AddOption extends Component {
               <Legend verticalAlign="top" height={36} />
             </PieChart>
           </ResponsiveContainer>
-          <div className={style.title}>参照以上因素添加后选项</div>
+          <div className={style.title}>参照以上因素添加候选项</div>
           <div className={style.tagContainer}>
             {
               options.map((item, index) => {

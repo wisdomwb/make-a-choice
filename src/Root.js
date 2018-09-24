@@ -7,49 +7,23 @@ import AddFactor from './pages/AddFactor'
 import DivideProportion from './pages/DivideProportion'
 import AddOption from './pages/AddOption'
 import Mark from './pages/Mark'
+import Calculate from './pages/Calculate'
 
 const newHistory = createBrowserHistory()
 
 class Root extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      question: '',
-      factors: [{
-        text: 'a',
-        proportion: 60
-      }, {
-        text: 'b',
-        proportion: 30
-      }, {
-        text: 'c',
-        proportion: 10
-      }],
-      options: [{
-        text: 'x',
-        stars: [{
-          key: 'a',
-          value: 3,
-        }, {
-          key: 'b',
-          value: 5,
-        }, {
-          key: 'c',
-          value: 5,
-        }]
-      }, {
-        text: 'y',
-        stars: [{
-          key: 'a',
-          value: 2,
-        }, {
-          key: 'b',
-          value: 5,
-        }, {
-          key: 'c',
-          value: 4,
-        }]
-      }]
+    let test
+    // test = true
+    if (test) {
+      this.state = testData
+    } else {
+      this.state = {
+        question: '',
+        factors: [],
+        options: [],
+      }
     }
   }
 
@@ -103,7 +77,17 @@ class Root extends Component {
 
   //添加选项
   addOption(option) {
-    const temp = [...this.state.options, { text: option }]
+    const stars = []
+    this.state.factors.forEach(item => {
+      stars.push({
+        key: item.text,
+        value: 3
+      })
+    })
+    const temp = [...this.state.options, {
+      text: option,
+      stars
+    }]
     this.setState({
       options: temp.map(item => item)
     })
@@ -152,6 +136,9 @@ class Root extends Component {
           <Route exact path="/mark" render={
             props => <Mark {...props} {...this.state} changeValue={this.changeValue.bind(this)} />
           } />
+          <Route exact path="/calculate" render={
+            props => <Calculate {...props} {...this.state}/>
+          } />
         </Switch>
       </Router>
     )
@@ -160,3 +147,42 @@ class Root extends Component {
 
 
 export default Root
+
+const testData = {
+  question: '',
+  factors: [{
+    text: 'a',
+    proportion: 60
+  }, {
+    text: 'b',
+    proportion: 30
+  }, {
+    text: 'c',
+    proportion: 10
+  }],
+  options: [{
+    text: 'x',
+    stars: [{
+      key: 'a',
+      value: 3,
+    }, {
+      key: 'b',
+      value: 5,
+    }, {
+      key: 'c',
+      value: 5,
+    }]
+  }, {
+    text: 'y',
+    stars: [{
+      key: 'a',
+      value: 2,
+    }, {
+      key: 'b',
+      value: 5,
+    }, {
+      key: 'c',
+      value: 4,
+    }]
+  }]
+}
