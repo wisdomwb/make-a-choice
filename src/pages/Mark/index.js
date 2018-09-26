@@ -58,11 +58,7 @@ class Mark extends Component {
           mode="light"
           icon={<Icon type="left" />}
           onLeftClick={this.props.history.goBack}
-          rightContent={[
-            <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-            <Icon key="1" type="ellipsis" />,
-          ]}
-        >NavBar</NavBar>
+        >打分</NavBar>
         <div className={style.mark}>
           <div className={style.question}>问题：{question}</div>
           <Table columns={this.getColumns(factors)} data={this.getData(options)} rowKey='key' scroll={{ x: true }} />

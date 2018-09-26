@@ -22,11 +22,7 @@ class Question extends Component {
           mode="light"
           icon={<Icon type="left" />}
           onLeftClick={this.props.history.goBack}
-          rightContent={[
-            <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-            <Icon key="1" type="ellipsis" />,
-          ]}
-        >NavBar</NavBar>
+        >问题</NavBar>
         <div className={style.body}>
           <div className={style.title}>面临的选择是什么？</div>
           <div className={style.content}>

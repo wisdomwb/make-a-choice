@@ -66,11 +66,7 @@ class AddOption extends Component {
           mode="light"
           icon={<Icon type="left" />}
           onLeftClick={this.props.history.goBack}
-          rightContent={[
-            <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-            <Icon key="1" type="ellipsis" />,
-          ]}
-        >NavBar</NavBar>
+        >选项</NavBar>
         <div className={style.addOption}>
           <div className={style.question}>问题：{question}</div>
           <ResponsiveContainer width="100%" height={200}>

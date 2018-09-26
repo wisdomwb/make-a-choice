@@ -10,7 +10,7 @@ const Home = (props) => {
     <div className={style.home}>
       <div className={style.title}>Make A Choice</div>
       <div className={style.content}>
-        你有时候会面临困难的选择，让这款小应用来帮你！
+        你有时候会面临困难的选择，让这款小应用来帮你解决它！
       </div>
       <div className={style.footer}>
         <Button type='primary' onClick={clickStart}>开始</Button>

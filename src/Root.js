@@ -152,13 +152,13 @@ const testData = {
   question: '',
   factors: [{
     text: 'a',
-    proportion: 60
+    proportion: 65
   }, {
     text: 'b',
-    proportion: 30
+    proportion: 31
   }, {
     text: 'c',
-    proportion: 10
+    proportion: 4
   }],
   options: [{
     text: 'x',
