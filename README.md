@@ -12,12 +12,8 @@ npm run dev
 npm run build
 ```
 # It looks like this
-<div class='imgWrapper'>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/0.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/1.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/2.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/3.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/4.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/5.jpeg" style='margin:10px;'/>
-  <img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/6.jpeg" style='margin:10px;'/>
-</div>
+![2](https://github.com/wisdomwb/images/blob/master/make-a-choice/2.jpeg)
+![5](https://github.com/wisdomwb/images/blob/master/make-a-choice/5.jpeg)
+![3](https://github.com/wisdomwb/images/blob/master/make-a-choice/3.jpeg)
+![4](https://github.com/wisdomwb/images/blob/master/make-a-choice/4.jpeg)
+![6](https://github.com/wisdomwb/images/blob/master/make-a-choice/6.jpeg)
