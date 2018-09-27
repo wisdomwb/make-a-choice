@@ -1,3 +1,10 @@
+<style>
+img {
+ width: 320px;
+ height:566px;
+}
+</style>
+
 # make-a-choice
 A react application helps people choose the best.
 # Build Setup
@@ -11,7 +18,7 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-## It looks like this
+# It looks like this
 ![0](https://github.com/wisdomwb/images/blob/master/make-a-choice/0.jpeg)
 ![1](https://github.com/wisdomwb/images/blob/master/make-a-choice/1.jpeg)
 ![2](https://github.com/wisdomwb/images/blob/master/make-a-choice/2.jpeg)
