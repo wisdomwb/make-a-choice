@@ -12,6 +12,7 @@ npm run dev
 npm run build
 ```
 # It looks like this
+<img width="320" height="566" src="https://github.com/wisdomwb/images/blob/master/make-a-choice/0.jpeg"/>
 ![0](https://github.com/wisdomwb/images/blob/master/make-a-choice/0.jpeg){:height="566px" width="320px"}
 ![1](https://github.com/wisdomwb/images/blob/master/make-a-choice/1.jpeg){:height="566px" width="320px"}
 ![2](https://github.com/wisdomwb/images/blob/master/make-a-choice/2.jpeg){:height="566px" width="320px"}
