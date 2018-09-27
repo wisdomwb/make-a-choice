@@ -33,3 +33,40 @@ export function FP1(value) {
 export function getF1(sF) {
   return FP1(getF(sF))
 }
+
+//检测数据类型
+// type({}) // "object"
+// type([]) // "array"
+// type(5) // "number"
+// type('abc') // "string"
+// type(null) // "null"
+// type() // "undefined"
+// type(/abcd/) // "regex"
+// type(new Date()) // "date"
+export function type(o) {
+  let s = Object.prototype.toString.call(o)
+  return s.match(/\[object (.*?)\]/)[1].toLowerCase()
+}
+
+//按照键值对寻找对象, isReturnIndex只在查询数组元素有用
+export function findObj(data, key, value, isReturnIndex = false) {
+  key = key.toString()
+  let obj = null, num = null
+  if (type(data) === 'array') {
+    data.forEach((item, index) => {
+      if (item[key] === value) {
+        obj = item
+        num = index
+      }
+    })
+  } else if (type(data) === 'object') {
+    for (let i in data) {
+      if (data.hasOwnProperty(i)) {
+        if (data[i][key] === value) {
+          obj = data[i]
+        }
+      }
+    }
+  }
+  return isReturnIndex ? num : obj
+}

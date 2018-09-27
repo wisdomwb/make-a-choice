@@ -8,6 +8,8 @@ import DivideProportion from './pages/DivideProportion'
 import AddOption from './pages/AddOption'
 import Mark from './pages/Mark'
 import Calculate from './pages/Calculate'
+import { findObj } from './utils'
+import { Toast } from 'antd-mobile'
 
 const newHistory = createBrowserHistory()
 
@@ -41,6 +43,10 @@ class Root extends Component {
 
   //添加因素
   addFactor(factor) {
+    if (findObj(this.state.factors, 'text', factor)) {
+      Toast.info('已存在该因素')
+      return
+    }
     const proportion = this.getProportion(this.state.factors.length + 1)
     const temp = [...this.state.factors, { text: factor, proportion }]
     this.setState({
@@ -77,6 +83,10 @@ class Root extends Component {
 
   //添加选项
   addOption(option) {
+    if (findObj(this.state.options, 'text', option)) {
+      Toast.info('已存在该选项')
+      return
+    }
     const stars = []
     this.state.factors.forEach(item => {
       stars.push({
@@ -137,7 +147,7 @@ class Root extends Component {
             props => <Mark {...props} {...this.state} changeValue={this.changeValue.bind(this)} />
           } />
           <Route exact path="/calculate" render={
-            props => <Calculate {...props} {...this.state}/>
+            props => <Calculate {...props} {...this.state} />
           } />
         </Switch>
       </Router>
